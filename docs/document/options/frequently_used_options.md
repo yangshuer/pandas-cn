@@ -1,8 +1,8 @@
 # 常用选项
 
-The following is a walkthrough of the more frequently used display options.
+下面是是常用案例演示。
 
-``display.max_rows`` and ``display.max_columns`` sets the maximum number of rows and columns displayed when a frame is pretty-printed. Truncated lines are replaced by an ellipsis.
+``display.max_rows`` 和 ``display.max_columns``  设置打印时显示的最大行数和列数。截断的行被省略号替换。
 
 ```python
 In [23]: df = pd.DataFrame(np.random.randn(7,2))
@@ -36,7 +36,7 @@ Out[27]:
 In [28]: pd.reset_option('max_rows')
 ```
 
-``display.expand_frame_repr`` allows for the representation of dataframes to stretch across pages, wrapped over the full column vs row-wise.
+``display.expand_frame_repr`` 允许数据显示跨页面延伸，包裹在整列与行之间。
 
 ```python
 In [29]: df = pd.DataFrame(np.random.randn(5,10))
@@ -66,7 +66,7 @@ Out[33]:
 In [34]: pd.reset_option('expand_frame_repr')
 ```
 
-``display.large_repr`` lets you select whether to display dataframes that exceed max_columns or max_rows as a truncated frame, or as a summary.
+``display.large_repr`` 选择超过max_列或max_行的数据显示为截断帧还是摘要（省略显示）。
 
 ```python
 In [35]: df = pd.DataFrame(np.random.randn(10,10))
@@ -111,7 +111,7 @@ In [41]: pd.reset_option('large_repr')
 In [42]: pd.reset_option('max_rows')
 ```
 
-``display.max_colwidth`` sets the maximum width of columns. Cells of this length or longer will be truncated with an ellipsis.
+``display.max_colwidth``设置列的最大宽度。以字符个数计算，超过此长度，数据将被省略号截断（用省略号表示）。
 
 ```python
 In [43]: df = pd.DataFrame(np.array([['foo', 'bar', 'bim', 'uncomfortably long string'],
@@ -137,8 +137,7 @@ Out[47]:
 In [48]: pd.reset_option('max_colwidth')
 ```
 
-``display.max_info_columns`` sets a threshold for when by-column info will be given.
-
+``display.max_info_columns`` 设置何时按列提供信息的阈值。
 ```python
 In [49]: df = pd.DataFrame(np.random.randn(10,10))
 
@@ -173,8 +172,7 @@ memory usage: 880.0 bytes
 In [54]: pd.reset_option('max_info_columns')
 ```
 
-``display.max_info_rows: df.info()`` will usually show null-counts for each column. For large frames this can be quite slow.``max_info_rows`` and ``max_info_cols`` limit this null check only to frames with smaller dimensions then specified. Note that you can specify the option ``df.info(null_counts=True)`` to override on showing a particular frame.
-
+``display.max_info_rows: df.info()`` 通常会显示每列的非空计数。当帧很大时，计算过程非常慢，`` max info rows``和`` max info cols``仅将此空检查限制为具有较小尺寸的帧，然后指定。，您可以指定选项``df.info（null_counts=true）``在显示特定帧时重写。
 ```python
 In [55]: df = pd.DataFrame(np.random.choice([0,1,np.nan], size=(10,10)))
 
@@ -233,8 +231,7 @@ memory usage: 880.0 bytes
 In [61]: pd.reset_option('max_info_rows')
 ```
 
-``display.precision`` sets the output display precision in terms of decimal places. This is only a suggestion.
-
+``display.precision``设置输出小数点后数据的位数。 
 ```python
 In [62]: df = pd.DataFrame(np.random.randn(5,5))
 
@@ -261,7 +258,7 @@ Out[66]:
 4  0.2003  0.8900  0.1948  0.3516  0.4489
 ```
 
-``display.chop_threshold`` sets at what level pandas rounds to zero when it displays a Series of DataFrame. This setting does not change the precision at which the number is stored.
+``display.chop_threshold`` 设置当pandas显示一系列数据时，它将在什么级别归零（数据绝对值小于参数）。此设置不会更改存储数字的精度。.
 
 ```python
 In [67]: df = pd.DataFrame(np.random.randn(6,6))
@@ -293,7 +290,7 @@ Out[71]:
 In [72]: pd.reset_option('chop_threshold')
 ```
 
-``display.colheader_justify`` controls the justification of the headers. The options are ‘right’, and ‘left’.
+``display.colheader_justify``控制标题的对齐方式。选项为“右”和“左”。
 
 ```python
 In [73]: df = pd.DataFrame(np.array([np.random.randn(6), np.random.randint(1,9,6)*.1, np.zeros(6)]).T,
